@@ -1,0 +1,16 @@
+# Keep the build context (and image) small.
+.venv/
+venv/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+
+# Secrets — pass GROQ_API_KEY at runtime, never bake it into the image.
+.env
+
+# Runtime data + model cache (regenerated / mounted, not copied in).
+data/
+.cache/
+*.faiss
+*.pkl

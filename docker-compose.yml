@@ -1,0 +1,16 @@
+services:
+  recruitai:
+    build: .
+    image: recruitai:latest
+    ports:
+      - "8501:8501"
+    # Reads GROQ_API_KEY (and optionally GROQ_MODEL) from your .env file.
+    env_file:
+      - .env
+    # Persist the SQLite DB + FAISS index across container restarts.
+    volumes:
+      - recruitai-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  recruitai-data:
